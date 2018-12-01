@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>Administration</title>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="javascripts/app.js"></script>
+</head>
+<body  ng-app="shopping" ng-controller="MainCtrl">
+<div style="margin-left: 5em;">
+<h1> Administrative Interface </h1>
+<form ng-submit="addItem()">
+  <input type="text" ng-model="itemName">Name</input>
+  <br>
+  <input type="text" ng-model="itemURL">Image URL</input>
+  <br>
+  <input type="text" ng-model="itemPrice">Price</input>
+  <br>
+    <button type="submit">Add Item</button>
+</form>
+
+<h1>Current Items</h1>
+<div ng-repeat="item in items | orderBy:['Name']">
+<span class="glyphicon glyphicon-remove" ng-click="delete(item)"></span>
+  {{item.Name}} - price {{item.price}} - purchases {{item.purchases}}
+  <br>
+  <img src={{item.urlvalue}} width="80" alt="item url">
+  <br>
+</div>
+</body>
+</html>
+
